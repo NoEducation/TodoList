@@ -1,0 +1,45 @@
+<h4>{{editing ? "Edycja" : "Dodawanie"}} zadania</h4>
+
+
+<div *ngIf="dataSend" class="m-a-1 jumbotron text-xs-center">
+  <h2>Zadanie zostało {{editing ? "zmienione" : "dodane"}} </h2>
+  <button  class="btn btn-primary" [routerLink]='["/"]'>Powrót do wszystkich zadan</button>
+</div>
+<form *ngIf="!dataSend" #form="ngForm" validate (ngSubmit)="save(form)">
+  <div class="form-group">
+    <label>Nazwa zdania</label>
+    <input type="text" class="form-control" #name="ngModel" name="name" required [(ngModel)]="model.taskName">
+    <span *ngIf="submitted && name.invalid" class="text-danger">
+      Proszę podać nazwe zadania
+    </span>
+  </div>
+  <div class="form-group">
+    <label>Twórca</label>
+    <input type="text" class="form-control" #creator="ngModel" name="creator" required [(ngModel)]="model.creatorName">
+    <span *ngIf="submitted && creator.invalid" class="text-danger">
+      Proszę podać twórce zadania
+    </span>
+  </div>
+  <div class="form-group">
+    <label>Opis zdania</label>
+    <textarea class="form-control" #description="ngModel" name="description" required [(ngModel)]="model.description"></textarea>
+    <span *ngIf="submitted && description.invalid" class="text-danger">
+      Proszę podać opis zadania
+    </span>
+  </div>
+  <div class="form-group" [ngSwitch]="editing">
+    <label>Data utworzenia</label>
+    <input type="datetime-local" *ngSwitchCase="true" class="form-control" #creationDate="ngModel" name="creationDate" required [(ngModel)]="model.creationDate">
+    <input type="date" *ngSwitchDefault class="form-control" #creationDate="ngModel" name="creationDate" required [(ngModel)]="model.creationDate">
+      <span *ngIf="submitted && creationDate.invalid" class="text-danger">
+        Proszę podać dzien stworzenia zadania
+      </span>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="btn btn-success">{{editing ? "Zapisz" : "Dodaj"}}</button>
+    <button class="btn btn-primary" [routerLink]='["/"]'>Powrót do wszystkich zadan</button>
+  </div>
+
+</form>
+

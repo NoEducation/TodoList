@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Oswald&display=swap&subset=latin-ext');
+
+body {
+  font-family: 'Indie Flower', cursive;
+  background-color: #D5D8DC;
+  font-size: 20px;
+}
+.button-home {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding: 5px;
+  border-radius:10px;
+}
+.box {
+  background-color: #117A65;
+  width: 400px;
+  padding: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px;
+  -webkit-box-shadow: 0px 2px 62px 85px rgba(17,122,101,1);
+  -moz-box-shadow: 0px 2px 62px 85px rgba(17,122,101,1);
+  box-shadow: 0px 2px 62px 85px rgba(17,122,101,1);
+}

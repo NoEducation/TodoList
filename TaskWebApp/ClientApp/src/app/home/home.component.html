@@ -1,0 +1,36 @@
+<h4>Wszystkie zadania</h4>
+<table class="table table-dark table-striped table-bordered ">
+  <thead>
+    <tr>
+      <th>Nr</th>
+      <th>Nazwa</th>
+      <th>Twórca</th>
+      <th>Data utworzenia</th>
+      <th>Opis zadania</th>
+      <th>Wykonane</th>
+      <th>Akcje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of tasks;let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{item.taskName}}</td>
+      <td>{{item.creatorName}}</td>
+      <td>{{item.creationDate | date}}</td>
+      <td>{{item.description}}</td>
+      <td>
+        <div class="form-check" [ngSwitch]="item.isFinished">
+          <input type="checkbox" class="form-check-input" [checked]="item.isFinished" (change)="changeFiledIsFinshed(item.taskid)">
+          <label class="form-check-label" *ngSwitchCase="true">Tak</label>
+          <label class="form-check-label" *ngSwitchDefault>Nie</label>
+        </div>
+      </td>
+      <td class="btn-group">
+        <button (click)="deleteTask(item.taskid)" class="btn btn-danger">Usun</button>
+        <a class="btn btn-warning" [routerLink]='["/task/edit",item.taskid]  '>Zmień</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a class="btn btn-primary btn-sm btn-block button-home" [routerLink]='["/task"]'>Utworz nowe zadanie</a>
